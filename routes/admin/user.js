@@ -1,11 +1,11 @@
 const router = require('koa-router')();
 
-router.get('/', (ctx) =>{
-  ctx.body = '用户管理';
+router.get('/', async (ctx) =>{
+  await ctx.render('admin/user/list');
 });
 
-router.get('/add', (ctx) =>{
-  ctx.body = '增加用户';
+router.get('/add', async (ctx) =>{
+  await ctx.render('admin/user/add');
 });
 
 router.get('/edit', (ctx) =>{

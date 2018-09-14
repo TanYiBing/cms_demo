@@ -10,7 +10,7 @@
 //引入需要的模块
 const Koa = require('koa'),
       router = require('koa-router')(),
-      render = require('art-template'),
+      render = require('koa-art-template'),
       path = require('path'),
       static = require('koa-static');
 
@@ -19,7 +19,7 @@ const Koa = require('koa'),
 const app = new Koa();
 
 //配置静态资源
-app.use(static(__dirname, '/public'));
+app.use(static(__dirname, '/views'));
 
 //配置模版引擎
 render(app, {
