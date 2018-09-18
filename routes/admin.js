@@ -3,11 +3,14 @@ const router = require('koa-router')();
 //引入子路由
 const login = require('./admin/login.js');
 const user = require('./admin/user.js');
+const url = require('url');
 
 //配置中间件 获取url地址
 router.use(async (ctx, next) => {
   // console.log(ctx.host);
   ctx.state.__HOST__ = `http://${ctx.host}`;
+
+  let pathname = url.parse(ctx.request.url).pathname;
 
   //权限判断
   if(ctx.session.userinfo) {
@@ -15,7 +18,7 @@ router.use(async (ctx, next) => {
     await next();//登陆之后继续乡下匹配路由
 
   }else{
-    if((ctx.url == '/admin/login') || (ctx.url == '/admin/login/doLogin')){
+    if((pathname == '/admin/login') || (pathname == '/admin/login/doLogin') || (pathname == '/admin/login/code')){
 
       await next();
       

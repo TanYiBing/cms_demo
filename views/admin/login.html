@@ -32,7 +32,14 @@
 				padding-bottom: 12px;
 			}
 		</style>
-	
+		<script src='{{__HOST__}}/public/admin/js/jquery-2.0.3.min.js'></script>
+		<script>
+			$(function(){
+				$('#code').click(function(){
+					$(this).attr('src', '{{__HOST__}}/admin/login/code?t='+Math.random()*1000);
+				});
+			})
+		</script>
 	</head>
 
 	<body class="login-layout">
@@ -58,22 +65,22 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" name="username" class="form-control" placeholder="用户名" />
+															<input type="text" name="username" class="form-control" placeholder="用户名" required/>
 															<i class="icon-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" name="password" class="form-control" placeholder="密码" />
+															<input type="password" name="password" class="form-control" placeholder="密码" required/>
 															<i class="icon-lock"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="验证吗" style="width:200px;float:left;" />
-															<img style="float:right;" src="https://www.itying.com/koa/admin_express.php?m=Public&a=verify&rand=1521453067" alt="">
+															<input type="text" class="form-control" name="code" placeholder="验证吗" style="width:200px;float:left;" required/>
+															<img style="float:right;" src="{{__HOST__}}/admin/login/code" alt="" id="code">
 														</span>
 													</label>
 
