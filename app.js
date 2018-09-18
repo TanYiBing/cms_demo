@@ -12,6 +12,8 @@ const Koa = require('koa'),
       router = require('koa-router')(),
       render = require('koa-art-template'),
       path = require('path'),
+      session = require('koa-session'),
+      bodyParser = require('koa-bodyparser'),
       static = require('koa-static');
 
 
@@ -19,7 +21,10 @@ const Koa = require('koa'),
 const app = new Koa();
 
 //配置静态资源
-app.use(static(__dirname, '/views'));
+app.use(static(__dirname, '/public'));
+
+//配置POST提交数据中间件
+app.use(bodyParser());
 
 //配置模版引擎
 render(app, {
@@ -36,6 +41,22 @@ const admin = require('./routes/admin.js');
 router.use('/admin',admin);
 router.use('/api',api);
 router.use(index);
+
+//配置session中间件
+app.keys = ['some secret hurr'];
+ 
+const CONFIG = {
+  key: 'koa:sess', 
+  maxAge: 864000,
+  autoCommit: true,
+  overwrite: true, 
+  httpOnly: true, 
+  signed: true, 
+  rolling: true,//每次请求都设置session
+  renew: false,
+};
+ 
+app.use(session(CONFIG, app));
 
 //启动路由
 app.use(router.routes());

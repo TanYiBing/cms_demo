@@ -17,6 +17,7 @@
     "koa-router": "^7.4.0",
     "koa-session": "^5.9.0",
     "koa-static": "^5.0.0",
+    "md5": "^2.2.1",
     "mongodb": "^3.1.4"
   }
 }
