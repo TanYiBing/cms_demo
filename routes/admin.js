@@ -1,6 +1,7 @@
 const router = require('koa-router')();
 
 //引入子路由
+const index = require('./admin/index.js');
 const login = require('./admin/login.js');
 const manager = require('./admin/manager.js');
 const url = require('url');
@@ -40,10 +41,7 @@ router.use(async (ctx, next) => {
 });
 
 
-router.get('/', async (ctx) => {
-	ctx.render('admin/index.html');
-});
-
+router.use('', index);
 router.use('/login', login);
 router.use('/manager', manager);
 

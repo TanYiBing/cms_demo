@@ -14,11 +14,16 @@ const Koa = require('koa'),
       path = require('path'),
       session = require('koa-session'),
       bodyParser = require('koa-bodyparser'),
+      sd = require('silly-datetime'),
+      jsonp = require('koa-jsonp'),
       static = require('koa-static');
 
 
 //实例化
 const app = new Koa();
+
+//配置jsonp中间件
+app.use(jsonp());
 
 //配置静态资源
 app.use(static(__dirname, '/public'));
@@ -30,7 +35,10 @@ app.use(bodyParser());
 render(app, {
   root: path.join(__dirname, 'views'),
   extname: '.html',
-  debug: process.env.NODE_ENV !== 'production'
+  debug: process.env.NODE_ENV !== 'production',
+  dateFormat: dateFormat = value => {
+    return sd.format(value, 'YYYY-MM-DD HH:mm');
+  } /*扩展模板里面的方法*/
 });
 
 //引入路由模块

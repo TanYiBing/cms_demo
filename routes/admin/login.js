@@ -40,8 +40,14 @@ router.post('/doLogin', async (ctx) =>{
   if (code.toLocaleLowerCase() == (ctx.session.code).toLocaleLowerCase()) {
     let result = await DB.find('admin', {'username': username, 'password': password});
     // console.log(result);
-    if (result.length ===1 ) {
+    if (result.length > 0 ) {
       ctx.session.userinfo = result[0];//保存session
+
+      //更新用户最后登录时间
+      await DB.update('admin', { '_id': DB.getObjectId(result[0]._id)}, {
+        last_time: new Date()
+      });
+
       ctx.redirect(ctx.state.__HOST__+'/admin');
     } else {
       ctx.render('admin/error', {

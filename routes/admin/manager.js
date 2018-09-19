@@ -3,7 +3,7 @@ const DB = require('../../model/db.js');
 
 router.get('/', async (ctx) =>{
   let result = await DB.find('admin',{});
-  console.log(result);
+  // console.log(result);
   
   await ctx.render('admin/manager/list.html', {
     list: result
