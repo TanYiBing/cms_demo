@@ -58,4 +58,9 @@ router.post('/doLogin', async (ctx) =>{
 
 });
 
+router.get('/loginOut', async (ctx) => {
+	ctx.session.userinfo = null;
+	ctx.redirect(`${ctx.state.__HOST__}/admin/login`)
+});
+
 module.exports = router.routes();

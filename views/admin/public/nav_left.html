@@ -43,8 +43,8 @@
 
 
 
-      <li>
-          <a href="#" class="dropdown-toggle">
+      <li class="{{if G.url[1]=='manager'}}active open{{/if}}">
+          <a href="#" class="dropdown-toggle" >
               <i class="icon-user-md"></i>
               <span class="menu-text"> 管理员管理 </span>
 
@@ -52,15 +52,15 @@
           </a>
 
           <ul class="submenu">
-              <li>
-                  <a href="{{__ROOT__}}/admin/user">
+              <li class="{{if !G.url[2]}}active{{/if}}">
+                  <a href="{{__HOST__}}/admin/manager">
                       <i class="icon-double-angle-right"></i>
                       管理员列表
                   </a>
               </li>
 
-              <li>
-                  <a href="{{__ROOT__}}/admin/user/add">
+              <li class="{{if G.url[2]=='add'}}active{{/if}}">
+                  <a href="{{__HOST__}}/admin/manager/add">
                       <i class="icon-double-angle-right"></i>
                       增加管理员
                   </a>
