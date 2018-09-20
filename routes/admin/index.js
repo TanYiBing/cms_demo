@@ -10,7 +10,7 @@ router.get('/changeStatus', async (ctx) => {
     let attr = ctx.query.attr; /*属性*/
     let id = ctx.query.id; /*更新的 id*/
 
-    console.log(ctx.query);
+    // console.log(ctx.query);
     ctx.body = {'message':'更新成功', 'success':true}
 
     let data = await DB.find(collectionName, { '_id': DB.getObjectId(id) });

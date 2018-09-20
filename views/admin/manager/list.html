@@ -64,7 +64,7 @@
 										</th>
 										<th class="center">状态</th>
 
-										<th width="80px;" class="center">操作</th>
+										<th width="100px;" class="center">操作</th>
 									</tr>
 								</thead>
 
@@ -87,16 +87,17 @@
 
 										<td>
 											<div class="visible-md visible-lg hidden-sm hidden-xs btn-group center">
-												
-
-												<button class="btn btn-xs btn-info">
-													<i class="icon-edit bigger-120"></i>
-												</button>
+												<a href="{{__HOST__}}/admin/manager/edit?id={{@$value._id}}">
+													<button class="btn btn-xs btn-info">
+														<i class="icon-edit bigger-120"></i>
+													</button>
+												</a>
 												&nbsp;
-												<button class="btn btn-xs btn-danger">
-													<i class="icon-trash bigger-120"></i>
-												</button>
-
+												<a href="">
+													<button class="btn btn-xs btn-danger">
+														<i class="icon-trash bigger-120"></i>
+													</button>
+												</a>
 											</div>
 
 										</td>
