@@ -4,6 +4,7 @@ const router = require('koa-router')();
 const index = require('./admin/index.js');
 const login = require('./admin/login.js');
 const manager = require('./admin/manager.js');
+const articlecate = require('./admin/articlecate.js');
 const url = require('url');
 
 //配置中间件 获取url地址
@@ -44,5 +45,6 @@ router.use(async (ctx, next) => {
 router.use('', index);
 router.use('/login', login);
 router.use('/manager', manager);
+router.use('/articlecate', articlecate);
 
 module.exports = router.routes();

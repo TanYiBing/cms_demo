@@ -25,7 +25,7 @@ const app = new Koa();
 //配置jsonp中间件
 app.use(jsonp());
 
-//配置静态资源
+//配置静态资
 app.use(static(__dirname, '/public'));
 
 //配置POST提交数据中间件
