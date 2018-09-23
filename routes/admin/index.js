@@ -7,11 +7,8 @@ router.get('/', async (ctx) => {
 
 router.get('/changeStatus', async (ctx) => {
     let collectionName = ctx.query.collectionName; /*数据库表名*/
-    let attr = ctx.query.attr; /*属性*/
+    let attr = ctx.query.attr; /*attr属性就是status状态*/
     let id = ctx.query.id; /*更新的 id*/
-
-    // console.log(ctx.query);
-    ctx.body = {'message':'更新成功', 'success':true}
 
     let data = await DB.find(collectionName, { '_id': DB.getObjectId(id) });
     // console.log(data);
@@ -37,6 +34,15 @@ router.get('/changeStatus', async (ctx) => {
         ctx.body = { 'message': '更新失败,参数错误', 'success': false };
     }
 
+});
+
+router.get('/remove', async (ctx) => {
+    let collectionName = ctx.query.collectionName; /*数据库表名*/
+    let id = ctx.query.id; /*删除的 id*/
+
+    let result  = DB.remove(collectionName, {'_id': DB.getObjectId(id)});
+
+    ctx.redirect(ctx.state.G.prevPage);
 });
 
 module.exports = router.routes();

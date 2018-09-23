@@ -20,6 +20,7 @@ router.use(async (ctx, next) => {
   ctx.state.G = {
     userinfo: ctx.session.userinfo,
     url: splitUrl,
+    prevPage:ctx.request.header['referer'],
   }
 
   //权限判断

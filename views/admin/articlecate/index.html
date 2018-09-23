@@ -84,8 +84,8 @@
 
 									<td class="hidden-480">
 										{{if $value.status==1}}
-										<img src="{{__HOST__}}/public/admin/images/yes.gif" onclick="app.toggle(this,'admin','status','{{@$value._id}}')" /> {{else}}
-										<img src="{{__HOST__}}/public/admin/images/no.gif" onclick="app.toggle(this,'admin','status','{{@$value._id}}')" /> {{/if}}
+										<img src="{{__HOST__}}/public/admin/images/yes.gif" onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')" /> {{else}}
+										<img src="{{__HOST__}}/public/admin/images/no.gif" onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')" /> {{/if}}
 									</td>
 
 									<td>
@@ -98,7 +98,7 @@
 												</button>
 											</a>
 
-											<a href="{{__HOST__}}/admin/articlecate/delete?id={{@$value._id}}">
+											<a class="delete" href="{{__HOST__}}/admin/remove?collectionName=articlecate&id={{@$value._id}}">
 
 
 												<button class="btn btn-xs btn-danger">
@@ -124,8 +124,8 @@
 
 									<td class="hidden-480">
 										{{if $value.status==1}}
-										<img src="{{__HOST__}}/public/admin/images/yes.gif" onclick="app.toggle(this,'admin','status','{{@$value._id}}')" /> {{else}}
-										<img src="{{__HOST__}}/public/admin/images/no.gif" onclick="app.toggle(this,'admin','status','{{@$value._id}}')" /> {{/if}}
+										<img src="{{__HOST__}}/public/admin/images/yes.gif" onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')" /> {{else}}
+										<img src="{{__HOST__}}/public/admin/images/no.gif" onclick="app.toggle(this,'articlecate','status','{{@$value._id}}')" /> {{/if}}
 									</td>
 
 									<td>
@@ -139,7 +139,7 @@
 												</button>
 											</a>
 
-											<a href="{{__HOST__}}/admin/articlecate/delete?id={{@$value._id}}">
+											<a class="delete" href="{{__HOST__}}/admin/remove?collectionName=articlecate&id={{@$value._id}}">
 
 
 												<button class="btn btn-xs btn-danger">
