@@ -22,4 +22,3 @@ const app = {
 $(function () {
     app.confirmDelete();
 })
-

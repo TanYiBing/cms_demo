@@ -55,7 +55,7 @@ app.keys = ['some secret hurr'];
  
 const CONFIG = {
   key: 'koa:sess', 
-  maxAge: 864000,
+  maxAge: 8640000,
   autoCommit: true,
   overwrite: true, 
   httpOnly: true, 
