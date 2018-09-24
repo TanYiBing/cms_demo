@@ -90,24 +90,6 @@ class Db{
 
             })
         }) 
-
-    //    return new Promise((resolve,reject)=>{
-
-    //         this.connect().then((db)=>{
-
-    //             var result = db.collection(collectionName).find(json1);
-
-    //             result.toArray(function(err,docs){
-
-    //                 if(err){
-    //                     reject(err);
-    //                     return;
-    //                 }
-    //                 resolve(docs);
-    //             })
-
-    //         })
-    //     })
     }
 
     update(collectionName,json1,json2){
@@ -159,6 +141,25 @@ class Db{
                     if(err){
                         reject(err);
                     }else{
+
+                        resolve(result);
+                    }
+                })
+
+
+            })
+        })
+    }
+
+    //统计数量的方法
+    count(collectionName, json) {
+        return new Promise((resolve, reject) => {
+            this.connect().then((db) => {
+
+                db.collection(collectionName).count(json, function (err, result) {
+                    if (err) {
+                        reject(err);
+                    } else {
 
                         resolve(result);
                     }

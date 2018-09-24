@@ -11,8 +11,11 @@ router.get('/', async (ctx) => {
         page: page, 
         pageSize: pageSize
     });
+    let count = await DB.count('article', {});
     await ctx.render('admin/article/index', {
-        list: result
+        list: result,
+        page: page,
+        totalPages: Math.ceil(count/pageSize)
     });
 });
 

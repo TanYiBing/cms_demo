@@ -159,7 +159,7 @@
 	{{include 'admin/public/footer.html'}}
 
 	<!--注意放在jq下面-->
-    <script src="{{__HOST__}}/admin/jqPaginator.js"></script>
+    <script src="{{__HOST__}}/public/admin/js/jqPaginator.js"></script>
 
 
 	<script>
@@ -168,13 +168,12 @@
 			visiblePages: 8,
 			currentPage: {{page}},
 			onPageChange: function (num, type) {
-				console.log(num, type);
-				if(type=='change'){
-					location.href="{{__HOST__}}/admin/article?page="+num;
+				// console.log(num, type);
+				if (type == 'change') {
+					location.href = "{{__HOST__}}/admin/article?page=" + num;
 				}
 			}
 		});
-
 	</script>
 
 
