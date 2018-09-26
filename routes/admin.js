@@ -7,6 +7,7 @@ const manager = require('./admin/manager.js');
 const articlecate = require('./admin/articlecate.js');
 const article = require('./admin/article.js');
 const url = require('url');
+const ueditor = require('koa2-ueditor');
 
 //配置中间件 获取url地址
 router.use(async (ctx, next) => {
@@ -49,5 +50,11 @@ router.use('/login', login);
 router.use('/manager', manager);
 router.use('/articlecate', articlecate);
 router.use('/article', article);
+
+//配置富文本编辑器
+router.all('/editor/controller', ueditor(['public', {
+  "imageAllowFiles": [".png", ".jpg", ".jpeg"],
+  "imagePathFormat": "/upload/ueditor/image/{yyyy}{mm}{dd}/{filename}"  // 保存为原文件名
+}]))
 
 module.exports = router.routes();

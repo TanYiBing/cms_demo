@@ -26,7 +26,7 @@ const app = new Koa();
 app.use(jsonp());
 
 //配置静态资
-app.use(static(__dirname, '/public'));
+app.use(static(__dirname +'/public'));
 
 //配置POST提交数据中间件
 app.use(bodyParser());
