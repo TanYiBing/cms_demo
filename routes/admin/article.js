@@ -35,7 +35,10 @@ router.get('/', async (ctx) => {
 });
 
 router.get('/add', async (ctx) => {
-    await ctx.render('admin/article/add.html')
+    let cateList = await DB.find('articlecate',{});
+    await ctx.render('admin/article/add.html', {
+        cateList: tools.cateToList(cateList)
+    })
 });
 
 router.post('/doAdd', upload.single('pic'), async (ctx) => {
