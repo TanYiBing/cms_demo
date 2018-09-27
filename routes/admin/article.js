@@ -59,7 +59,7 @@ router.post('/doAdd', upload.single('img_url'), async (ctx) => {
     let content = ctx.req.body.content || '';
     let img_url;
     if (ctx.req.file) {
-        img_url = ctx.req.file.path.replace('/public','');
+        img_url = ctx.req.file.path.replace('public\\','');
     } else {
         img_url = '';
     }
@@ -89,51 +89,49 @@ router.get('/edit', async (ctx) => {
     });
 });
 
-router.post('/doEdit', async (ctx) => {
-    console.log(ctx.req.body);
-    // let prevPage = ctx.req.body.prevPage || '';  /*上一页的地址*/
-    // let id = ctx.req.body.id;
-    // let pid = ctx.req.body.pid;
-    // let catename = ctx.req.body.catename.trim();
-    // let title = ctx.req.body.title.trim();
-    // let author = ctx.req.body.author.trim();
-    // let status = ctx.req.body.status;
-    // let is_best = ctx.req.body.is_best;
-    // let is_hot = ctx.req.body.is_hot;
-    // let is_new = ctx.req.body.is_new;
-    // let keywords = ctx.req.body.keywords;
-    // let description = ctx.req.body.description || '';
-    // let content = ctx.req.body.content || '';
-    // let img_url;
-    // let json;
-    // if (ctx.req.file) {
-    //     img_url = ctx.req.file.path.replace('/public', '');
-    // } else {
-    //     img_url = '';
-    // }
+router.post('/doEdit', upload.single('img_url'), async (ctx) => {
+    let prevPage = ctx.req.body.prevPage || '';  /*上一页的地址*/
+    let id = ctx.req.body.id;
+    let pid = ctx.req.body.pid;
+    let catename = ctx.req.body.catename.trim();
+    let title = ctx.req.body.title.trim();
+    let author = ctx.req.body.author.trim();
+    let status = ctx.req.body.status;
+    let is_best = ctx.req.body.is_best;
+    let is_hot = ctx.req.body.is_hot;
+    let is_new = ctx.req.body.is_new;
+    let keywords = ctx.req.body.keywords;
+    let description = ctx.req.body.description || '';
+    let content = ctx.req.body.content || '';
+    let json;
+    let img_url;
+    if (ctx.req.file) {
+        img_url = ctx.req.file.path.replace('public\\', '');
+    } else {
+        img_url = '';
+    }
 
-    // //属性的简写
-    // //注意是否修改了图片
-    // if (img_url) {
-    //     json = {
-    //         pid, catename, title, author, status, is_best, is_hot, is_new, keywords, description, content, img_url
-    //     }
-    // } else {
-    //     json = {
-    //         pid, catename, title, author, status, is_best, is_hot, is_new, keywords, description, content
-    //     }
-    // }
+    //属性的简写
+    //注意是否修改了图片
+    if (img_url) {
+        json = {
+            pid, catename, title, author, status, is_best, is_hot, is_new, keywords, description, content, img_url
+        }
+    } else {
+        json = {
+            pid, catename, title, author, status, is_best, is_hot, is_new, keywords, description, content
+        }
+    }
 
-    // let reseult = await DB.update('article', { "_id": DB.getObjectId(id) }, json);
-    // console.log(result);
+    let result = await DB.update('article', { "_id": DB.getObjectId(id) }, json);
 
 
-    // //跳转
-    // if (prevPage) {
-    //     ctx.redirect(prevPage);
-    // } else {
-    //     ctx.redirect(ctx.state.__HOST__ + '/admin/article');
-    // }
+    //跳转
+    if (prevPage) {
+        ctx.redirect(prevPage);
+    } else {
+        ctx.redirect(ctx.state.__HOST__ + '/admin/article');
+    }
 });
 
 router.get('/delete', async (ctx) => {
