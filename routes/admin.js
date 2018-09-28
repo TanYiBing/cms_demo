@@ -6,6 +6,7 @@ const login = require('./admin/login.js');
 const manager = require('./admin/manager.js');
 const articlecate = require('./admin/articlecate.js');
 const article = require('./admin/article.js');
+const focus = require('./admin/focus.js')
 const url = require('url');
 const ueditor = require('koa2-ueditor');
 
@@ -50,6 +51,8 @@ router.use('/login', login);
 router.use('/manager', manager);
 router.use('/articlecate', articlecate);
 router.use('/article', article);
+router.use('/focus', focus);
+
 
 //配置富文本编辑器
 router.all('/editor/controller', ueditor(['public', {
