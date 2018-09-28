@@ -9,12 +9,18 @@ const app = {
                     el.src = '/admin/images/yes.gif';
                 }
             }
-        })
+        });
     },
     confirmDelete() {
         $('.delete').click(function () {
             var flag = confirm('您确定要删除吗？');
             return flag;
+        })
+    },
+    changeSort(el, collectionName, id) {
+        let sortValue = el.value;
+        $.get('/admin/changeSort', { collectionName: collectionName, id: id, sortValue: sortValue }, function (data) {
+            console.log(data);
         })
     }
 }
