@@ -56,6 +56,11 @@ class Db{
     }
 
     find(collectionName, json1, json2, json3){
+        // Db.find('admin', {}, {'title':1}, {
+        //     page:2,
+        //     pageSize:20,
+        //     sort: {'add_time':-1}//文章按照添加时间进行排序
+        // })
         if (arguments.length == 2) {
             var attr = {};
             var skipNum = 0;
@@ -70,6 +75,12 @@ class Db{
             var page = json3.page || 1;
             var pageSize = json3.pageSize || 20;
             var skipNum = (page - 1) * pageSize;
+
+            if (json3.sortJson) {
+                var sortJson = json3.sortJson;
+            }else {
+                var sortJson = {};
+            }
         } else {
             console.log('传入参数错误');
         }
@@ -78,7 +89,7 @@ class Db{
 
             this.connect().then((db) => {
                 //var result=db.collection(collectionName).find(json);
-                var result = db.collection(collectionName).find(json1, { fields: attr }).skip(skipNum).limit(pageSize);
+                var result = db.collection(collectionName).find(json1, { fields: attr }).skip(skipNum).limit(pageSize).sort(sortJson);
                 result.toArray(function (err, docs) {
 
                     if (err) {

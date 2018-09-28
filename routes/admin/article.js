@@ -24,7 +24,10 @@ router.get('/', async (ctx) => {
 
     let result = await DB.find('article', {}, {}, {
         page: page,
-        pageSize: pageSize
+        pageSize: pageSize,
+        sortJson: {
+            'add_time': -1
+        }
     });
     let count = await DB.count('article', {});
     await ctx.render('admin/article/index', {
