@@ -52,8 +52,4 @@ router.post('/doEdit', async (ctx) => {
     ctx.redirect(`${ctx.state.__HOST__}/admin/articlecate`);
 });
 
-router.get('/delete', async (ctx) => {
-    ctx.body = '删除用户';
-});
-
 module.exports = router.routes();
