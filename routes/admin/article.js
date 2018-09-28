@@ -57,6 +57,7 @@ router.post('/doAdd', upload.single('img_url'), async (ctx) => {
     let keywords = ctx.req.body.keywords;
     let description = ctx.req.body.description || '';
     let content = ctx.req.body.content || '';
+    let add_time = new Date();
     let img_url;
     if (ctx.req.file) {
         img_url = ctx.req.file.path.replace('public\\','');
@@ -66,7 +67,7 @@ router.post('/doAdd', upload.single('img_url'), async (ctx) => {
 
     //属性的简写
     let json = {
-        pid, catename, title, author, status, is_best, is_hot, is_new, keywords, description, content, img_url
+        pid, catename, title, author, status, is_best, is_hot, is_new, keywords, description, content, img_url, add_time
     }
     let result = await DB.insert('article', json);
 
