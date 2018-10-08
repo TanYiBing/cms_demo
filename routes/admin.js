@@ -8,6 +8,7 @@ const articlecate = require('./admin/articlecate.js');
 const article = require('./admin/article.js');
 const focus = require('./admin/focus.js');
 const link = require('./admin/link.js');
+const nav = require('./admin/nav.js');
 const url = require('url');
 const ueditor = require('koa2-ueditor');
 
@@ -54,6 +55,7 @@ router.use('/articlecate', articlecate);
 router.use('/article', article);
 router.use('/focus', focus);
 router.use('/link', link);
+router.use('/nav', nav);
 
 
 //配置富文本编辑器

@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2018/3/20 0020.
- */
 const router = require('koa-router')();
 const DB = require('../../model/db.js');
 const multer = require('koa-multer');
