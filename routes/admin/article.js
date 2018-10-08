@@ -15,7 +15,7 @@ let storage = multer.diskStorage({
         cb(null, Date.now() + "." + fileFormat[fileFormat.length - 1]);
     }
 });
-let upload = multer({ storage: storage })
+let upload = multer({ storage: storage });
 
 //分类改造
 router.get('/', async (ctx) => {

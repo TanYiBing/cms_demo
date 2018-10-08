@@ -62,7 +62,6 @@
 						<table id="sample-table-1" class="table table-striped table-bordered table-hover center">
 							<thead>
 								<tr>
-
 									<th class="center">名称</th>
 
 									<th class="center">
@@ -84,7 +83,7 @@
 										{{$value.title}}
 									</td>
 									<td>
-										<img src="{{$value.pic}}" alt="" style="width:80px" />
+										<img src="{{__HOST__}}/{{$value.pic}}" alt="" style="width:80px" />
 									</td>
 
 									<td>
@@ -115,7 +114,7 @@
 											</a>
 
 
-											<a class="delete" href="{{__HOST__}}/admin/remove?collection=focus&id={{@$value._id}}">
+											<a class="delete" href="{{__HOST__}}/admin/remove?collectionName=focus&id={{@$value._id}}">
 
 
 
