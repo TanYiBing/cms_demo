@@ -73,7 +73,7 @@
 
         <li class="{{if G.url[1]=='articlecate'}}active open{{/if}}">
             <a href="#" class="dropdown-toggle">
-                <i class="icon-user-md"></i>
+                <i class="icon-list"></i>
                 <span class="menu-text"> 分类管理 </span>
 
                 <b class="arrow icon-angle-down"></b>
@@ -101,7 +101,7 @@
 
         <li class="{{if G.url[1]=='article'}}active open{{/if}}">
             <a href="#" class="dropdown-toggle">
-                <i class="icon-user-md"></i>
+                <i class="icon-edit"></i>
                 <span class="menu-text"> 内容管理 </span>
         
                 <b class="arrow icon-angle-down"></b>
@@ -128,7 +128,7 @@
 
         <li class="{{if G.url[1]=='focus'}}active open{{/if}}">
             <a href="#" class="dropdown-toggle">
-                <i class="icon-user-md"></i>
+                <i class="icon-picture"></i>
                 <span class="menu-text"> 轮播图管理 </span>
         
                 <b class="arrow icon-angle-down"></b>
@@ -153,35 +153,31 @@
             </ul>
         </li>
 
-        <li>
+        <li class="{{if G.url[1]=='link'}}active open{{/if}}">
             <a href="#" class="dropdown-toggle">
                 <i class="icon-paperclip"></i>
-
-                <span class="menu-text">
-                    友情链接管理
-                    <span class="badge badge-primary ">5</span>
-                </span>
-
+                <span class="menu-text"> 友情链接管理 </span>
+        
                 <b class="arrow icon-angle-down"></b>
             </a>
-
+        
             <ul class="submenu">
-                <li>
-                    <a href="#">
+                <li class="{{if !G.url[2]}}active{{/if}}">
+                    <a href="{{__HOST__}}/admin/link">
                         <i class="icon-double-angle-right"></i>
-                        友情链接列表
+                         友情链接
                     </a>
                 </li>
-
-                <li>
-                    <a href="#">
+        
+                <li class="{{if G.url[2]=='add'}}active{{/if}}">
+                    <a href="{{__HOST__}}/admin/link/add">
                         <i class="icon-double-angle-right"></i>
                         增加友情链接
                     </a>
                 </li>
+        
+        
             </ul>
-
-
         </li>
 
         <li>
