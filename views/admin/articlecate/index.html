@@ -79,7 +79,7 @@
 								{{each list}}
 								<tr class="">
 									<td>
-										{{$value.title}}
+										{{$value.title}}--{{@$value._id}}
 									</td>
 
 									<td class="hidden-480">
@@ -113,13 +113,12 @@
 								</tr>
 
 
-
 								{{each $value.list}}
 								<tr class="subtitle">
 
 
 									<td>
-										-----{{$value.title}}
+										-----{{$value.title}}--{{@$value._id}}
 									</td>
 
 									<td class="hidden-480">

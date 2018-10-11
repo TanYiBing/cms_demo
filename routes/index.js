@@ -9,7 +9,6 @@ router.use(async (ctx, next) => {
         sortJson: { 'sort': 1 }
     });
     let pathname = url.parse(ctx.request.url).pathname;
-    console.log(pathname);
 
     ctx.state.nav = navResult;
     ctx.state.pathname = pathname;
@@ -38,7 +37,23 @@ router.get('/case', async (ctx) => {
 });
 
 router.get('/service', async (ctx) => {
-    ctx.render('default/service.html')
+    let serviceList = await DB.find('article', { 'pid': '5ab34b61c1348e1148e9b8c2'});
+    ctx.render('default/service.html', {
+        serviceList: serviceList
+    });
+});
+
+router.get('/content/:id', async (ctx) => {
+    // console.log(ctx.params);
+
+    let id = ctx.params.id;
+    console.log(id);
+    let content = await DB.find('article', {'_id': DB.getObjectId(id)});
+    console.log(content);
+    
+    ctx.render('default/content.html', {
+        list: content[0]
+    });
 });
 
 router.get('/about', async (ctx) => {

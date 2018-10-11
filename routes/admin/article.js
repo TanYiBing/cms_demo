@@ -20,7 +20,7 @@ let upload = multer({ storage: storage });
 //分类改造
 router.get('/', async (ctx) => {
     let page = ctx.query.page || 1;
-    let pageSize = 3;
+    let pageSize = 10;
 
     let result = await DB.find('article', {}, {}, {
         page: page,
