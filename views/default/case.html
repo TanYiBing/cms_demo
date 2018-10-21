@@ -26,14 +26,11 @@
 
 		<div class="header_title clear">
 			<p>
-				<a href="#">服务行业</a>
-				<a href="#">教育行业</a>
-				<a href="#">房地产业</a>
-				<a href="#" style="margin-right:20px;">能源行业</a>
-
+				{{each cateList}}
+				<a {{if pid == $value._id}}class="active" {{/if}} href="/case?pid={{@$value._id}}">{{$value.title}}</a>
+				{{/each}}
 			</p>
 		</div>
-
 
 	</div>
 
@@ -43,74 +40,17 @@
 
 		<div class="main">
 			<ul class="clear">
-
+				{{each articleList}}
 				<li>
-
-					<a href="#">
-						<img src="default/images/successful_case/main_image1.jpg" />
+					<a href="content/{{@$value._id}}">
+						<img src="{{$value.img_url}}" />
 					</a>
-
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-
-
+					<p>{{$value.title}}</p>
 				</li>
-				<li>
-
-					<a href="#">
-						<img src="default/images/successful_case/main_image2.jpg" />
-					</a>
-
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-
-				</li>
-				<li>
-
-					<a href="#" style=" margin-right:0;">
-						<img src="default/images/successful_case/main_image3.jpg" />
-					</a>
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-
-				</li>
-				<li>
-					<a href="#">
-						<img src="default/images/successful_case/main_image4.jpg" />
-					</a>
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-				</li>
-				<li>
-					<a href="#">
-						<img src="default/images/successful_case/main_image4.jpg" />
-					</a>
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-				</li>
-				<li>
-					<a href="#">
-						<img src="default/images/successful_case/main_image4.jpg" />
-					</a>
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-				</li>
-				<li>
-					<a href="#">
-						<img src="default/images/successful_case/main_image4.jpg" />
-					</a>
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-				</li>
-				<li>
-					<a href="#">
-						<img src="default/images/successful_case/main_image4.jpg" />
-					</a>
-					<p>新部委整合职责相继挂牌 近日都有哪些新动</p>
-				</li>
-
+				{{/each}}
 
 			</ul>
-
-
 		</div>
-
-
-
-
 	</div>
 
 

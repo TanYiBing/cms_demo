@@ -33,7 +33,34 @@ router.get('/news', async (ctx) => {
 });
 
 router.get('/case', async (ctx) => {
-    ctx.render('default/case.html')
+    // 获取成功案例下面的分类
+    let cateList = await DB.find('articlecate', { 'pid': '5ab3209bdf373acae5da097e'});
+
+    // 获取所有子分类下面的数据
+    // 1.取得子分类的所有id
+    let subCateIdArr = [];
+
+    // 实现点击分类切换
+    let pid = ctx.query.pid;
+    let articleList;
+    if (pid) {
+        // 如果存在
+        articleList = await DB.find('article', { 'pid': pid });
+
+    } else {
+
+        for (let i = 0; i < cateList.length; i++) {
+            subCateIdArr.push(`${cateList[i]._id}`);
+        }
+        // 查出所有数据SQL
+        articleList = await DB.find('article', { 'pid': { $in: subCateIdArr } });
+    }
+    
+    ctx.render('default/case.html', {
+        cateList: cateList,
+        articleList: articleList,
+        pid: pid
+    });
 });
 
 router.get('/service', async (ctx) => {
@@ -47,9 +74,9 @@ router.get('/content/:id', async (ctx) => {
     // console.log(ctx.params);
 
     let id = ctx.params.id;
-    console.log(id);
+    // console.log(id);
     let content = await DB.find('article', {'_id': DB.getObjectId(id)});
-    console.log(content);
+    // console.log(content);
     
     ctx.render('default/content.html', {
         list: content[0]
