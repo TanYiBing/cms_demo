@@ -36,6 +36,11 @@ router.get('/case', async (ctx) => {
     // 获取成功案例下面的分类
     let cateList = await DB.find('articlecate', { 'pid': '5ab3209bdf373acae5da097e'});
 
+    // 分页
+    let articleNum;
+    let page = ctx.query.page || 1;
+    let pageSize = 1;
+
     // 获取所有子分类下面的数据
     // 1.取得子分类的所有id
     let subCateIdArr = [];
@@ -43,9 +48,15 @@ router.get('/case', async (ctx) => {
     // 实现点击分类切换
     let pid = ctx.query.pid;
     let articleList;
+
+    
     if (pid) {
         // 如果存在
-        articleList = await DB.find('article', { 'pid': pid });
+        articleList = await DB.find('article', { 'pid': pid }, {}, {
+            page,
+            pageSize
+        });
+        articleNum = await DB.count('article', { 'pid': pid });
 
     } else {
 
@@ -54,12 +65,15 @@ router.get('/case', async (ctx) => {
         }
         // 查出所有数据SQL
         articleList = await DB.find('article', { 'pid': { $in: subCateIdArr } });
+        articleNum = await DB.count('article', { 'pid': { $in: subCateIdArr } });
     }
     
     ctx.render('default/case.html', {
         cateList: cateList,
         articleList: articleList,
-        pid: pid
+        pid: pid,
+        page: page,
+        totalPages: Math.ceil(articleNum/pageSize)
     });
 });
 
