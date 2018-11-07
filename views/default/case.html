@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="default/css/heder_nav-menu.css" />
 	<link rel="stylesheet" type="text/css" href="default/css/successful_case.css" />
 	<link rel="stylesheet" type="text/css" href="default/css/bootstrap.min.css" />
-	<script src="/default/js/jquery-2.0.3.min.js"></script>
+	<script src="default/js/jquery-2.0.3.min.js"></script>
 </head>
 
 <body>
@@ -25,7 +25,6 @@
 	</div>
 
 	<div id="header_title-wrapper">
-
 		<div class="header_title clear">
 			<p>
 				{{each cateList}}
@@ -38,8 +37,6 @@
 
 
 	<div id="main_wrapper">
-
-
 		<div class="main">
 			<ul class="clear">
 				{{each articleList}}
@@ -55,7 +52,7 @@
 		<div id="page" class="pagination"></div>
 	</div>
 
-	<script src="/default/js/jqPaginator.js"></script>
+	<script src="default/js/jqPaginator.js"></script>
 	<script>
 		$('#page').jqPaginator({
 			totalPages: {{totalPages}},
