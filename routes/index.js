@@ -18,13 +18,25 @@ router.use(async (ctx, next) => {
 
 router.get('/', async (ctx) => {
 
-    // 由于状态在后台没写好，可能是字符串或数字，所以使用$or
-    let focusResult = await DB.find('focus', { $or: [{ 'status': '1' }, { 'status': 1 }]}, {}, {
+    //ctx.body="前台首页";
+    console.time('start');
+
+    //轮播图  注意状态数据不一致问题  建议在后台增加数据的时候状态 转化成number类型
+    let focusResult = await DB.find('focus', { $or: [{ 'status': 1 }, { 'status': '1' }] }, {}, {
+
         sortJson: { 'sort': 1 }
-    });
-    //   console.log(navResult);
-    ctx.render('default/index.html', {
-        focus: focusResult
+    })
+    //导航条的数据
+    let links = await DB.find('link', { $or: [{ 'status': 1 }, { 'status': '1' }] }, {}, {
+
+        sortJson: { 'sort': 1 }
+    })
+
+
+    ctx.render('default/index', {
+
+        focus: focusResult,
+        links: links
     });
 });
 
